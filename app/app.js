@@ -7,14 +7,14 @@ app.controller('AppController', function($scope, $http) {
     $scope.emailSaved = false
     $scope.errors = []
 
-    $http.get('http://localhost:8080/api/v1/emails')
+    $http.get('https://emails-api-v1.herokuapp.com/api/v1/emails')
         .then((response) => {
             $scope.emails = response.data
         })
         .catch((_) => {})
 
     $scope.removeEmail = function(email) {
-        $http.delete(`http://localhost:8080/api/v1/emails/${email._id}`)
+        $http.delete(`https://emails-api-v1.herokuapp.com/api/v1/emails/${email._id}`)
             .then((_) => {
                 const index = $scope.emails.indexOf(email)
                 $scope.emails.splice(index, 1)
@@ -23,7 +23,7 @@ app.controller('AppController', function($scope, $http) {
     }
 
     $scope.createEmail = function(email) {
-        $http.post('http://localhost:8080/api/v1/emails', email)
+        $http.post('https://emails-api-v1.herokuapp.com/api/v1/emails', email)
             .then((response) => {
                 $scope.emails.push(response.data)
                 $scope.emailSaved = true
@@ -34,7 +34,7 @@ app.controller('AppController', function($scope, $http) {
     }
 
     $scope.updateEmail = function(email) {
-        $http.put(`http://localhost:8080/api/v1/emails/${email._id}`, email)
+        $http.put(`https://emails-api-v1.herokuapp.com/api/v1/emails/${email._id}`, email)
             .then((response) => {
                 const found = $scope.emails.find(item => item._id === email._id)
                 const index = $scope.emails.indexOf(found)
