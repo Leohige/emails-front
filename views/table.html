@@ -1,0 +1,21 @@
+<table class="table table-hover" id="table-body">
+    <thead>
+        <tr>
+            <th scope="col">Endereço</th>
+            <th scope="col">Criado Em</th>
+            <th scope="col">Atualizado Em</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-light" ng-repeat="email in emails | filter: { address: search }">
+            <th class="align-middle">{{ email.address }}</th>
+            <th class="align-middle">{{ email.created_at | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
+            <th class="align-middle">{{ email.updated_at | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
+            <th class="align-middle">
+                <button type="button" class="btn btn-warning btn-sm" ng-click="editEmail(email)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="removeEmail(email)">Excluir</button>
+            </th>
+        </tr>
+    </tbody>
+</table>
