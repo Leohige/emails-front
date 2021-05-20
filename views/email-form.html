@@ -1,0 +1,30 @@
+<div class="modal" id="emailForm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ email._id ? 'Atualizar' : 'Novo' }} Email</h5>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" role="alert" ng-show="emailSaved">
+                    Salvo com sucesso.
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="errors.length > 0">
+                    Falha ao salvar.
+                    <ul id="error-list">
+                        <li ng-repeat="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Endereço:</label>
+                        <input type="text" class="form-control" ng-model="$parent.email.address" placeholder="e.g example@mail.com">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="closeForm()" class="btn btn-secondary">Fechar</button>
+                <button type="button" ng-click="submitForm()" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
